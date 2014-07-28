@@ -10,7 +10,7 @@ using SakuraUI.Annotations;
 
 namespace SakuraUI.Themes
 {
-    partial class ReactiveTheme
+    public partial class ReactiveTheme
     {
         #region Private Brushes
         private const byte Opacity = 0x88;
@@ -290,7 +290,7 @@ namespace SakuraUI.Themes
         }
     }
 
-    partial class ReactiveTheme : INotifyPropertyChanged
+    public partial class ReactiveTheme : INotifyPropertyChanged
     {
         private T RaiseAndSetIfChanged<T>(ref T oldValue, T newValue, [CallerMemberName] string propertyName = null)
         {
