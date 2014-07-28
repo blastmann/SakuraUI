@@ -7,16 +7,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="White">
-        
-        <Grid Margin="18">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+    <Grid Background="{StaticResource BackgroundBrush}">
 
-            <StackPanel></StackPanel>
+        <Grid Margin="18">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Frame x:Name="TestFrame" />
+            
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Button Content="Themes" Width="160" Click="ThemeTestOnClick"/>
+            </StackPanel>
         </Grid>
-      
+
     </Grid>
 </Page>

@@ -24,7 +24,12 @@ namespace SakuraUI.Test
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+        }
+
+        private void ThemeTestOnClick(object sender, RoutedEventArgs e)
+        {
+            TestFrame.Navigate(typeof (ThemePages));
         }
     }
 }

@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="SakuraUI.Test.ThemePages"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <ListView Header="SakuraUI Background Selector" SelectionMode="None">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" Margin="24, 0" FontSize="20" Foreground="{StaticResource AccentBrush}"/>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListViewItem>
+                <Button Background="DodgerBlue" Content="Blue" HorizontalAlignment="Stretch" Click="BlueOnClick"/>
+            </ListViewItem>
+
+            <ListViewItem>
+                <Button Background="HotPink" Content="HotPink" HorizontalAlignment="Stretch" Click="PinkOnClick"/>
+            </ListViewItem>
+
+            <ListViewItem>
+                <Button Background="GreenYellow" Content="GreenYellow" HorizontalAlignment="Stretch" Click="GreenYellowOnClick"/>
+            </ListViewItem>
+
+            <ListViewItem>
+                <Button Background="OrangeRed" Content="OrangeRed" HorizontalAlignment="Stretch" Click="OrangeRedOnClick"/>
+            </ListViewItem>
+
+            <ListViewItem>
+                <Button Background="White" BorderBrush="{StaticResource AccentBrush}" BorderThickness="1" Foreground="{StaticResource AccentBrush}" Content="White" HorizontalAlignment="Stretch" Click="WhiteOnClick"/>
+            </ListViewItem>
+        </ListView>
+    </Grid>
+</Page>

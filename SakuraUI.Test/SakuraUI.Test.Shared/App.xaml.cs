@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
+using SakuraUI.Themes;
 
 namespace SakuraUI.Test
 {
@@ -132,6 +133,18 @@ namespace SakuraUI.Test
 
             // TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+        private static ReactiveTheme _theme;
+
+        public static ReactiveTheme Theme
+        {
+            get
+            {
+                if (_theme != null) return _theme;
+                _theme = (ReactiveTheme)Current.Resources["ReactiveTheme"];
+                return _theme;
+            }
         }
     }
 }

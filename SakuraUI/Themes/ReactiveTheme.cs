@@ -265,7 +265,7 @@ namespace SakuraUI.Themes
 
         static void InitDefaultTheme()
         {
-            var accentColor = Color.FromArgb(255, 255, 140, 0);
+            var accentColor = Color.FromArgb(255, 0xFF, 0xB6, 0xC1);
             var secondaryAccentColor = accentColor;
             var backgroundColor = Colors.White;
             var secondaryBackgroundColor = backgroundColor;
