@@ -4,35 +4,35 @@ using System.Windows.Input;
 namespace SakuraUI.Mvvm
 {
     /// <summary>
-    ///     Typed action command
+    /// Typed action command
     /// </summary>
     /// <typeparam name="T">The type to act against</typeparam>
     public interface IActionCommand<T> : IActionCommand
     {
         /// <summary>
-        ///     Override the action
+        /// Override the action
         /// </summary>
         /// <param name="action"></param>
         void OverrideAction(Action<T> action);
     }
 
     /// <summary>
-    ///     Basic action command
+    /// Basic action command
     /// </summary>
     public interface IActionCommand : ICommand
     {
         /// <summary>
-        ///     True if the original command has been overridden
+        /// True if the original command has been overridden
         /// </summary>
         bool Overridden { get; set; }
 
         /// <summary>
-        ///     Raise the execute changed event
+        /// Raise the execute changed event
         /// </summary>
         void RaiseCanExecuteChanged();
     }
     /// <summary>
-    ///     Delegate command - does it all
+    /// Delegate command - does it all
     /// </summary>
     public class ActionCommand<T> : IActionCommand<T>
     {
@@ -47,7 +47,7 @@ namespace SakuraUI.Mvvm
         }
 
         /// <summary>
-        ///     Override the action
+        /// Override the action
         /// </summary>
         /// <param name="action"></param>
         public void OverrideAction(Action<T> action)
@@ -57,7 +57,7 @@ namespace SakuraUI.Mvvm
         }
 
         /// <summary>
-        ///     Constructor with action to perform
+        /// Constructor with action to perform
         /// </summary>
         /// <param name="execute">The action to execute</param>
         public ActionCommand(Action<T> execute)
@@ -66,7 +66,7 @@ namespace SakuraUI.Mvvm
         }
 
         /// <summary>
-        ///     Constructor with action and condition
+        /// Constructor with action and condition
         /// </summary>
         /// <param name="execute"></param>
         /// <param name="canExecute"></param>
