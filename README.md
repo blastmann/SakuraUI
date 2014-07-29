@@ -1,4 +1,4 @@
-SakuraUI
+SakuraUI Kit
 ========
 
 This is an UI framework for Windows Universal app.
@@ -11,5 +11,14 @@ ReactiveTheme is a theme class that allow you change color and notify property c
 
 ![ReactiveTheme][1]
   [1]: http://i1.tietuku.com/ca015991fe8c095f.png
+
+**SettingsHelper**
+
+SettingsHelper can help you persisting your app settings. You can just use LocalSettingsHelper or RoamingSettingsHelper to save settings in local or cloud. Or you  can also use SettingsHelper to save other information with ApplicationDataContainer. These classes are so powerful and convenient.
+
+**ActionCommand**
+
+This class from UltraLightMvvm in codeplex. You can use it to create command-binding in ViewModel.
+
 
 To be continued...
