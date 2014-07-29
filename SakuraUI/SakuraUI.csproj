@@ -50,6 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Themes\ReactiveTheme.cs" />
     <Compile Include="Utilities\LocalSettingsHelper.cs" />
+    <Compile Include="Utilities\RoamingSettingsHelper.cs" />
     <Compile Include="Utilities\SettingsHelper.cs" />
   </ItemGroup>
   <ItemGroup>

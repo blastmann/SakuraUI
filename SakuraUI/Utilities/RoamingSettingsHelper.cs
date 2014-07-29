@@ -2,9 +2,9 @@
 
 namespace SakuraUI.Utilities
 {
-    public static class LocalSettingsHelper
+    public static class RoamingSettingsHelper
     {
-        private static ApplicationDataContainer AppSettings { get { return ApplicationData.Current.LocalSettings; } }
+        private static ApplicationDataContainer AppSettings { get { return ApplicationData.Current.RoamingSettings; } }
 
         public static bool IsSettingsExists(string key)
         {

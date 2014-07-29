@@ -3,7 +3,7 @@ using Windows.Storage;
 
 namespace SakuraUI.Utilities
 {
-    public class SettingsHelper
+    public static class SettingsHelper
     {
         public static bool IsSettingsExists(string key, ApplicationDataContainer container)
         {
