@@ -31,6 +31,7 @@ namespace SakuraUI.Mvvm
         /// </summary>
         void RaiseCanExecuteChanged();
     }
+
     /// <summary>
     /// Delegate command - does it all
     /// </summary>
