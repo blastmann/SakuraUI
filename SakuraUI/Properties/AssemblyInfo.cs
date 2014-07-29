@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SakuraUI")]
-[assembly: AssemblyDescription("UI framework for Windows Runtime")]
+[assembly: AssemblyDescription("UI Kit for Windows Universal App")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("SakuraUI")]
