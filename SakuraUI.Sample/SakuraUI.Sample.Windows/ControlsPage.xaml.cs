@@ -32,5 +32,9 @@ namespace SakuraUI.Sample
             FlyBlock.NewText = DateTime.Now.ToString();
         }
 
+        private void RotationTextOnClick(object sender, RoutedEventArgs e)
+        {
+            RotationTextBlock.Text = (RotationTextBlock.Text.Length > 12) ? "Hello world" : DateTime.Now.ToString();
+        }
     }
 }

@@ -12,7 +12,9 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Vertical">
@@ -29,6 +31,12 @@
                 <controls:CircularProgressBar SegmentBrush="DodgerBlue" VerticalAlignment="Center" HorizontalContentAlignment="Center" Radius="40" StrokeThickness="20" Percentage="{Binding ElementName=Slider, Path=Value}" />
             </StackPanel>
             <Slider x:Name="Slider" Margin="20, 0" Maximum="100" Minimum="0" Value="68" Foreground="DodgerBlue"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Margin="0, 24, 0, 0">
+            <TextBlock Text="RoationTextBlock" Margin="20, 0, 0, 10" FontSize="17" Foreground="YellowGreen" />
+            <controls:RotationTextBlock x:Name="RotationTextBlock" Text="Hello world" Margin="20, 0" Foreground="YellowGreen" FontSize="32" />
+            <Button Content="Set New Text" Click="RotationTextOnClick" Background="YellowGreen"/>
         </StackPanel>
     </Grid>
 
