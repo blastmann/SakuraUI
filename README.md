@@ -33,7 +33,7 @@ This is a progress bar with circle UI.
 
 ----------
 
-## Utitiles ##
+## Utilities ##
 
 **SettingsHelper**
 
