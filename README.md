@@ -25,7 +25,7 @@ This is enhanced TextBlock. When you set new Text for it, this control will take
 
 This is also enhanced TextBlock. When you set new Text for it, this control will take a rotation effect.
 
-**CircleProgressBar**
+**CircularProgressBar**
 
 This is a progress bar with circle UI.
 
