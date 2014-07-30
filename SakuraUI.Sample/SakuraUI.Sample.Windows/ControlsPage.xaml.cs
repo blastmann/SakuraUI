@@ -31,5 +31,6 @@ namespace SakuraUI.Sample
         {
             FlyBlock.NewText = DateTime.Now.ToString();
         }
+
     }
 }

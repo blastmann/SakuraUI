@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:SakuraUI.Controls"
+    Foreground="{StaticResource AccentBrush}"
     mc:Ignorable="d">
 
     <Grid>
@@ -15,8 +16,25 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Vertical">
+            <TextBlock Text="FlyTextBlock" Margin="20, 0, 0, 10" FontSize="17"></TextBlock>
             <controls:FlyTextBlock x:Name="FlyBlock" Foreground="{StaticResource AccentBrush}" Margin="20, 0"/>
             <Button Content="Current Time" Click="CurrentTimeOnClick"/>
         </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Margin="0, 24, 0, 0" VerticalAlignment="Stretch">
+            <TextBlock Text="CircleProgressBar" Margin="20, 0" FontSize="17" Foreground="DodgerBlue"/>
+            <StackPanel Orientation="Horizontal" Margin="20, 10" Height="150">
+                <controls:CircularProgressBar SegmentBrush="DodgerBlue" VerticalAlignment="Center" HorizontalContentAlignment="Center" Radius="40" StrokeThickness="7" Percentage="{Binding ElementName=Slider, Path=Value}" />
+                <controls:CircularProgressBar SegmentBrush="DodgerBlue" VerticalAlignment="Center" HorizontalContentAlignment="Center" Radius="20" StrokeThickness="40" Percentage="{Binding ElementName=Slider, Path=Value}" Margin="18, 0"/>
+                <controls:CircularProgressBar SegmentBrush="DodgerBlue" VerticalAlignment="Center" HorizontalContentAlignment="Center" Radius="40" StrokeThickness="20" Percentage="{Binding ElementName=Slider, Path=Value}" />
+            </StackPanel>
+            <Slider x:Name="Slider" Margin="20, 0" Maximum="100" Minimum="0" Value="68" Foreground="DodgerBlue"/>
+        </StackPanel>
     </Grid>
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <EntranceThemeTransition />
+        </TransitionCollection>
+    </Page.Transitions>
 </Page>
