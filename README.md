@@ -11,6 +11,11 @@ This project from Listen which is a Windows Phone app. SakuraUI contains many mo
 
 ReactiveTheme is a theme class that allow you change color and notify property changed to UIElement immediate. You can binding brush with UIElement, and change color in later. When color changed, ReactiveTheme will notify UIElements, and UIElements will take effect immediate.
 
+
+**AnimationCreator**
+
+You can use this class to create some reusable animation without XAML code. If you use this helper class, please make surue your UIElement's RenderTransform is CompositeTransform or Projection is PlaneProjection.
+
 ![ReactiveTheme][1]
 
 ----------
