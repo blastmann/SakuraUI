@@ -56,6 +56,7 @@
     <Compile Include="Themes\ReactiveTheme.cs" />
     <Compile Include="Utilities\HtmlStringExtension.cs" />
     <Compile Include="Utilities\JavaTimeStampExtension.cs" />
+    <Compile Include="Utilities\LinqToVisualTree.cs" />
     <Compile Include="Utilities\LocalSettingsHelper.cs" />
     <Compile Include="Utilities\RoamingSettingsHelper.cs" />
     <Compile Include="Utilities\SettingsHelper.cs" />
