@@ -19,6 +19,7 @@
 
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <Button Content="Themes" Width="160" Click="ThemeTestOnClick"/>
+                <Button Content="Controls" Width="160" Click="ControlsTestOnClick"></Button>
             </StackPanel>
         </Grid>
 

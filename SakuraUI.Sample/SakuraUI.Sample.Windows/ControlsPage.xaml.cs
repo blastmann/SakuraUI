@@ -20,21 +20,16 @@ namespace SakuraUI.Sample
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class ControlsPage : Page
     {
-        public MainPage()
+        public ControlsPage()
         {
             this.InitializeComponent();
         }
 
-        private void ThemeTestOnClick(object sender, RoutedEventArgs e)
+        private void CurrentTimeOnClick(object sender, RoutedEventArgs e)
         {
-            TestFrame.Navigate(typeof(ThemePage));
-        }
-
-        private void ControlsTestOnClick(object sender, RoutedEventArgs e)
-        {
-            TestFrame.Navigate(typeof(ControlsPage));
+            FlyBlock.NewText = DateTime.Now.ToString();
         }
     }
 }
