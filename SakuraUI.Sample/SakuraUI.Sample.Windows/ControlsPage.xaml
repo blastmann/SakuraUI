@@ -38,6 +38,11 @@
             <controls:RotationTextBlock x:Name="RotationTextBlock" Text="Hello world" Margin="20, 0" Foreground="YellowGreen" FontSize="32" />
             <Button Content="Set New Text" Click="RotationTextOnClick" Background="YellowGreen"/>
         </StackPanel>
+
+        <StackPanel Grid.Row="3" Margin="0, 24, 0, 0">
+            <TextBlock Text="MediaController" Margin="20, 0, 0, 10" FontSize="17" Foreground="Magenta" />
+            <controls:MediaBasicController HorizontalAlignment="Left" Margin="10, 0" Foreground="Magenta"/>
+        </StackPanel>
     </Grid>
 
     <Page.Transitions>

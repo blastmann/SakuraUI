@@ -1,0 +1,346 @@
+﻿<UserControl
+    x:Class="SakuraUI.Controls.MediaBasicController"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Name="UserControl"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <Style TargetType="Path" x:Key="PathStyle">
+            <Setter Property="Stretch" Value="Uniform" />
+        </Style>
+
+        <Storyboard x:Name="TurnToPauseStoryboard">
+            <DoubleAnimation From="0" To="90" Duration="0:0:0.3" Storyboard.TargetName="PlayButton" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationX)" />
+            <DoubleAnimation From="-90" To="0" Duration="0:0:0.3" BeginTime="0:0:0.3" Storyboard.TargetName="PauseButton" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationX)" />
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PlayButton" Storyboard.TargetProperty="Opacity">
+                <DiscreteDoubleKeyFrame KeyTime="0:0:0.3" Value="0" />
+                <DiscreteDoubleKeyFrame KeyTime="0:0:0.6" Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PauseButton" Storyboard.TargetProperty="Opacity">
+                <DiscreteDoubleKeyFrame KeyTime="0" Value="0" />
+                <DiscreteDoubleKeyFrame KeyTime="0:0:0.3" Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Name="TurnToPlayStoryboard">
+            <DoubleAnimation From="90" To="0" Duration="0:0:0.3" BeginTime="0:0:0.3" Storyboard.TargetName="PlayButton" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationX)" />
+            <DoubleAnimation From="0" To="-90" Duration="0:0:0.3" Storyboard.TargetName="PauseButton" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationX)" />
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PauseButton" Storyboard.TargetProperty="Opacity">
+                <DiscreteDoubleKeyFrame KeyTime="0:0:0.3" Value="0" />
+                <DiscreteDoubleKeyFrame KeyTime="0:0:0.6" Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PlayButton" Storyboard.TargetProperty="Opacity">
+                <DiscreteDoubleKeyFrame KeyTime="0" Value="0" />
+                <DiscreteDoubleKeyFrame KeyTime="0:0:0.3" Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <SolidColorBrush x:Key="ButtonPressedBackgroundBrush" Color="#FF1F1F1F" />
+        <SolidColorBrush x:Key="IconPressedBrush" Color="White" />
+        <SolidColorBrush x:Key="PointerOverBrush" Color="{Binding ElementName=UserControl, Path=ForegroundColor}"></SolidColorBrush>
+        <Thickness x:Key="RoundButtonBorderThickness">2</Thickness>
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+        <Grid VerticalAlignment="Top" Margin="0, 0" HorizontalAlignment="Center">
+            <Button x:Name="PauseButton" 
+                    HorizontalAlignment="Center" 
+                    Click="PauseButton_OnClick"
+                    VerticalAlignment="Center" 
+                    MinWidth="0"
+                    Grid.Column="0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Grid Background="Transparent">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="PointerOver">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="BorderBrush">
+                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PointerOverBrush}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Fill">
+                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PointerOverBrush}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Pressed">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Background" >
+                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonPressedBackgroundBrush}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="BorderBrush" >
+                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonPressedBackgroundBrush}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Fill">
+                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBrush}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Disabled" />
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <Border Margin="6"
+                                                    BorderBrush="{x:Null}"
+                                                    Background="{x:Null}"
+                                                    CornerRadius="90"
+                                                    Width="84"
+                                                    Height="84">
+                                            <Border x:Name="ButtonBackground" 
+                                                    Margin="6"
+                                                    BorderThickness="{StaticResource RoundButtonBorderThickness}"
+                                                    BorderBrush="{TemplateBinding Foreground}"
+                                                    CornerRadius="90">
+                                                <Path x:Name="Content"
+                                                      Data="M60,34.5L62.2734336853027,34.9453163146973 64.21875,36.28125 65.5546875,38.2265663146973 66,40.5 66,64.5 65.5546875,66.7734375 64.21875,68.71875 62.2734336853027,70.0546875 60,70.5 57.7265586853027,70.0546875 55.78125,68.71875 54.4453086853027,66.7734375 54,64.5 54,40.5 54.4453086853027,38.2265663146973 55.78125,36.28125 57.7265586853027,34.9453163146973 60,34.5z M36,34.5L38.2734375,34.9453163146973 40.21875,36.28125 41.5546875,38.2265663146973 42,40.5 42,64.5 41.5546875,66.7734375 40.21875,68.71875 38.2734375,70.0546875 36,70.5 33.7265625,70.0546875 31.78125,68.71875 30.4453105926514,66.7734375 30,64.5 30,40.5 30.4453105926514,38.2265663146973 31.78125,36.28125 33.7265625,34.9453163146973 36,34.5z"
+                                                      Style="{StaticResource PathStyle}"
+                                                      Fill="{TemplateBinding Foreground}"
+                                                      Margin="22"
+                                                      HorizontalAlignment="Center">
+                                                </Path>
+                                            </Border>
+                                        </Border>
+                                    </Grid>
+
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+
+                <Button.Projection>
+                    <PlaneProjection RotationX="90"/>
+                </Button.Projection>
+            </Button>
+
+            <Button x:Name="PlayButton" 
+                    Opacity="1"
+                    Visibility="Visible"
+                    Grid.Column="0" 
+                    Click="PlayButton_OnClick"
+                    MinWidth="0"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Grid Background="Transparent">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="PointerOver">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="BorderBrush">
+                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PointerOverBrush}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Fill">
+                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PointerOverBrush}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Pressed">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Background" >
+                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonPressedBackgroundBrush}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="BorderBrush" >
+                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonPressedBackgroundBrush}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Fill">
+                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBrush}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Disabled" />
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <Border Margin="6"
+                                                    Background="Transparent"
+                                                    CornerRadius="90"
+                                                    Width="84"
+                                                    Height="84">
+                                            <Border x:Name="ButtonBackground" 
+                                                    Margin="6"
+                                                    BorderThickness="{StaticResource RoundButtonBorderThickness}"
+                                                    BorderBrush="{TemplateBinding Foreground}"
+                                                    CornerRadius="90">
+                                                <Path x:Name="Content"
+                                                      Data="M197,96.25L202.624984741211,97.6875076293945 208.5,100.5 427.5,236.5 427.812469482422,236.75 428.75,237.5 431.5,240.25 434.25,244.25 435.1875,246.6875 435.5,249.5 435.1875,252.375 434.25,255 432.9375,257.3125 431.5,259.25 430.0625,260.8125 428.75,262 427.812469482422,262.75 427.5,263 208.5,398.5 205.546859741211,400.28125 202.687484741211,401.625 199.921859741211,402.53125 197.25,403 192.3125,402.8125 188,401.25 184.4375,398.3125 181.75,394 180.0625,388.375 179.5,381.5 179.5,118 180.0625,111.0625 181.75,105.25 184.375,100.75 187.75,97.75 191.9375,96.25 197,96.25z"
+                                                      Style="{StaticResource PathStyle}"
+                                                      Fill="{TemplateBinding Foreground}"
+                                                      Margin="22"
+                                                      HorizontalAlignment="Center">
+                                                    <Path.RenderTransform>
+                                                        <TranslateTransform X="2" />
+                                                    </Path.RenderTransform>
+                                                </Path>
+                                            </Border>
+                                        </Border>
+                                    </Grid>
+
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+
+                <Button.Projection>
+                    <PlaneProjection />
+                </Button.Projection>
+            </Button>
+        </Grid>
+
+        <Button x:Name="PreviousButton"
+                Click="PreviousButton_OnClick"
+                Holding="PreviousButton_OnHolding"
+                MinWidth="0"
+                VerticalAlignment="Center">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Grid Background="Transparent">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Normal" />
+                                            <VisualState x:Name="PointerOver">
+                                                <Storyboard>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="BorderBrush">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PointerOverBrush}" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Fill">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PointerOverBrush}" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </VisualState>
+                                            <VisualState x:Name="Pressed">
+                                                <Storyboard>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Background" >
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonPressedBackgroundBrush}" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="BorderBrush" >
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonPressedBackgroundBrush}" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Fill">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBrush}" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </VisualState>
+                                            <VisualState x:Name="Disabled" />
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                    <Border Margin="6"
+                                                    BorderBrush="{x:Null}"
+                                                    Background="{x:Null}"
+                                                    CornerRadius="90"
+                                                    Width="66"
+                                                    Height="66">
+                                        <Border x:Name="ButtonBackground" 
+                                                    Margin="6"
+                                                    CornerRadius="90"
+                                                    BorderThickness="{StaticResource RoundButtonBorderThickness}"
+                                                    BorderBrush="{TemplateBinding Foreground}"
+                                                    Background="Transparent">
+                                            <Path x:Name="Content"
+                                                  Data="M394.25,117.5L398.624969482422,117.625015258789 402.25,119 405.1875,121.562515258789 407.5,125.25 408.999969482422,130.062515258789 409.5,136 409.5,363 408.999969482422,369 407.5,374 405.1875,377.875 402.25,380.5 398.624969482422,381.875 394.25,382 391.859375,381.5625 389.4375,380.75 386.984375,379.5625 384.5,378 198.5,261 198.1875,260.75 197.25,260 194.75,257.5 192.5,254 191.75,251.875015258789 191.5,249.5 191.75,247.125 192.5,245 194.75,241.5 197.25,239.25 198.1875,238.687515258789 198.5,238.5 384.5,121.5 389.4375,118.750015258789 394.25,117.5z M141,101L149.125,101.375 156.5,102.5 163,104.500007629395 168.5,107.5 172.9375,111.500007629395 176.25,116.5 178.3125,122.750015258789 179,130.5 179,368.5 178.3125,376.3125 176.25,382.75 172.9375,387.9375 168.5,392 163,394.9375 156.5,396.75 149.125,397.6875 141,398 132.8125,397.6875 125.25,396.75 118.5625,394.9375 113,392 108.562492370605,387.9375 105.25,382.75 103.1875,376.3125 102.5,368.5 102.5,130.5 103.1875,122.750015258789 105.25,116.5 108.562492370605,111.500007629395 113,107.5 118.5625,104.500007629395 125.25,102.5 132.8125,101.375 141,101z"
+                                                  Fill="{TemplateBinding Foreground}"
+                                                  Style="{StaticResource PathStyle}"
+                                                  Margin="18"
+                                                  HorizontalAlignment="Center">
+                                            </Path>
+                                        </Border>
+                                    </Border>
+                                </Grid>
+
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Button x:Name="NextButton"
+                Holding="NextButton_OnHolding"
+                MinWidth="0"
+                Click="NextButton_OnClick"
+                VerticalAlignment="Center">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Grid Background="Transparent">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Normal" />
+                                            <VisualState x:Name="PointerOver">
+                                                <Storyboard>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="BorderBrush">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PointerOverBrush}" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Fill">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PointerOverBrush}" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </VisualState>
+                                            <VisualState x:Name="Pressed">
+                                                <Storyboard>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Background" >
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonPressedBackgroundBrush}" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="BorderBrush" >
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonPressedBackgroundBrush}" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Fill">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBrush}" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </VisualState>
+                                            <VisualState x:Name="Disabled" />
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                    <Border Margin="6"
+                                            BorderBrush="{x:Null}"
+                                            Background="{x:Null}"
+                                            CornerRadius="90"
+                                            Width="66"
+                                            Height="66">
+                                        <Border x:Name="ButtonBackground" 
+                                                    Margin="6"
+                                                    BorderBrush="{TemplateBinding Foreground}"
+                                                    BorderThickness="{StaticResource RoundButtonBorderThickness}"
+                                                    CornerRadius="90"
+                                                    Background="Transparent">
+                                            <Path x:Name="Content"
+                                                  Data="M117.75,117.5L122.5625,118.750015258789 127.5,121.5 313.5,238.5 313.8125,238.687515258789 314.75,239.25 317.25,241.5 319.5,245 320.25,247.125 320.5,249.5 320.25,251.875015258789 319.5,254 317.25,257.75 316,259.25 314.75,260.25 313.8125,260.8125 313.5,261 127.5,378 125.015625,379.5625 122.5625,380.75 120.140625,381.5625 117.75,382 113.375,381.875 109.75,380.5 106.8125,377.875 104.5,374 103,369 102.5,363 102.5,136 103,130.062515258789 104.5,125.25 106.8125,121.562515258789 109.75,119 113.375,117.625015258789 117.75,117.5z M371,101L379.1875,101.375 386.75,102.5 393.4375,104.500007629395 399,107.5 403.4375,111.500007629395 406.75,116.5 408.812469482422,122.750015258789 409.5,130.5 409.5,368.5 408.812469482422,376.3125 406.75,382.75 403.4375,387.9375 399,392 393.4375,394.9375 386.75,396.75 379.1875,397.6875 371,398 362.875,397.6875 355.5,396.75 349,394.9375 343.5,392 339.0625,387.9375 335.75,382.75 333.6875,376.3125 333,368.5 333,130.5 333.6875,122.750015258789 335.75,116.5 339.0625,111.500007629395 343.5,107.5 349,104.500007629395 355.5,102.5 362.875,101.375 371,101z"
+                                                  Style="{StaticResource PathStyle}"
+                                                  Fill="{TemplateBinding Foreground}"
+                                                  Margin="18"
+                                                  HorizontalAlignment="Center">
+                                            </Path>
+                                        </Border>
+                                    </Border>
+                                </Grid>
+
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+    </StackPanel>
+
+</UserControl>

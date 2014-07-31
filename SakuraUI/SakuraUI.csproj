@@ -50,6 +50,9 @@
       <DependentUpon>CircularProgressBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\FlyTextBlock.cs" />
+    <Compile Include="Controls\MediaBasicController.xaml.cs">
+      <DependentUpon>MediaBasicController.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RotationTextBlock.xaml.cs">
       <DependentUpon>RotationTextBlock.xaml</DependentUpon>
     </Compile>
@@ -69,6 +72,10 @@
   <ItemGroup />
   <ItemGroup>
     <Page Include="Controls\CircularProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\MediaBasicController.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
