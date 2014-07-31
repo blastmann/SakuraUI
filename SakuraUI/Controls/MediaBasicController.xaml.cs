@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Input;
@@ -48,6 +49,7 @@ namespace SakuraUI.Controls
         public static readonly DependencyProperty MediaStateProperty = DependencyProperty.Register("MediaState", typeof(MediaElementState), typeof(MediaBasicController), new PropertyMetadata(MediaElementState.Stopped, MediaStateChangedCallback));
         public static new readonly DependencyProperty ForegroundProperty = DependencyProperty.Register("Foreground", typeof(Brush), typeof(MediaBasicController), new PropertyMetadata(new SolidColorBrush(Colors.LightPink), ForegroundChangedBrush));
         public static readonly DependencyProperty ForegroundColorProperty = DependencyProperty.Register("ForegroundColor", typeof(Color), typeof(MediaBasicController), new PropertyMetadata(Colors.LightPink, null));
+
         private static void ForegroundChangedBrush(DependencyObject d, DependencyPropertyChangedEventArgs args)
         {
             var me = (MediaBasicController)d;
@@ -163,24 +165,32 @@ namespace SakuraUI.Controls
     {
         private void PauseButton_OnClick(object sender, RoutedEventArgs e)
         {
+            OnPauseClick();
+
             if (PauseCommand == null) return;
             PauseCommand.Execute(PauseCommandParameter);
         }
 
         private void PlayButton_OnClick(object sender, RoutedEventArgs e)
         {
+            OnPlayClick();
+
             if (PlayCommand == null) return;
             PlayCommand.Execute(PlayCommandParameter);
         }
 
         private void PreviousButton_OnClick(object sender, RoutedEventArgs e)
         {
+            OnMovePreviousClick();
+
             if (MovePreviousCommand == null) return;
             MovePreviousCommand.Execute(MovePreviousCommandParameter);
         }
 
         private void NextButton_OnClick(object sender, RoutedEventArgs e)
         {
+            OnMoveNextClick();
+
             if (MoveNextCommand == null) return;
             MoveNextCommand.Execute(MoveNextCommandParameter);
         }
@@ -195,6 +205,41 @@ namespace SakuraUI.Controls
         {
             if (FastRewindCommand == null) return;
             FastRewindCommand.Execute(FastRewindCommandParameter);
+        }
+    }
+
+    public partial class MediaBasicController
+    {
+        public event EventHandler PlayClick;
+
+        private void OnPlayClick()
+        {
+            var handler = PlayClick;
+            if (handler != null) handler(this, EventArgs.Empty);
+        }
+
+        public event EventHandler PauseClick;
+
+        private void OnPauseClick()
+        {
+            var handler = PauseClick;
+            if (handler != null) handler(this, EventArgs.Empty);
+        }
+
+        public event EventHandler MoveNextClick;
+
+        private void OnMoveNextClick()
+        {
+            var handler = MoveNextClick;
+            if (handler != null) handler(this, EventArgs.Empty);
+        }
+
+        public event EventHandler MovePreviousClick;
+
+        private void OnMovePreviousClick()
+        {
+            var handler = MovePreviousClick;
+            if (handler != null) handler(this, EventArgs.Empty);
         }
     }
 }
