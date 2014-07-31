@@ -62,6 +62,7 @@
     <Compile Include="Utilities\JavaTimeStampExtension.cs" />
     <Compile Include="Utilities\LinqToVisualTree.cs" />
     <Compile Include="Utilities\LocalSettingsHelper.cs" />
+    <Compile Include="Utilities\MessagePublisher.cs" />
     <Compile Include="Utilities\RoamingSettingsHelper.cs" />
     <Compile Include="Utilities\SettingsHelper.cs" />
   </ItemGroup>
