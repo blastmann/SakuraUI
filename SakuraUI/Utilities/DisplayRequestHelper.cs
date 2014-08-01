@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.System.Display;
 
-namespace Yangwenyi.WindowsPhone.Listen.Frameworks
+namespace SakuraUI.Utilities
 {
     class DisplayRequestHelper
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Yangwenyi.WindowsPhone.Listen.Frameworks
+namespace SakuraUI.Utilities
 {
     public static class CharExtensions
     {
