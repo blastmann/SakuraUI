@@ -57,6 +57,7 @@
       <DependentUpon>RotationTextBlock.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mvvm\ActionCommand.cs" />
+    <Compile Include="Mvvm\BaseNotify.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Themes\ReactiveTheme.cs" />
