@@ -9,6 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Button Click="ShowInputBoxOnClick">Show InputBox</Button>
     </Grid>
 </Page>

@@ -25,6 +25,15 @@ namespace SakuraUI.WindowsPhone.Utilites
             }
         }
 
+        static DialogService()
+        {
+            HardwareButtons.BackPressed += (s, o) =>
+            {
+                if (!IsDialogShow) return;
+                o.Handled = true;
+            };
+        }
+
         public FrameworkElement Child { get; set; }
         public bool IsOpen { get; private set; }
         public AnimationTypes AnimationType { get; set; }
