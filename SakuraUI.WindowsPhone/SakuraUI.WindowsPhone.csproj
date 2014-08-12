@@ -80,13 +80,26 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\InputTextDialog.xaml.cs">
+      <DependentUpon>InputTextDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\DialogService.cs" />
     <Compile Include="Utilities\TemplatedVisualTreeExtensions.cs" />
     <Compile Include="Utilities\VisualTreeExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\InputTextDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <EmbeddedResource Include="Styles\SakuraStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
