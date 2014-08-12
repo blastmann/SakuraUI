@@ -40,7 +40,7 @@
         <SolidColorBrush x:Key="WhiteBrush" Color="White" />
         <SolidColorBrush x:Key="BlackBrush" Color="Black" />
                 
-        <Style TargetType="Button" x:Key="SakuraButtonStyle">
+        <Style TargetType="Button">
             <Setter Property="Padding" Value="10" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="MinWidth" Value="0" />
@@ -51,7 +51,6 @@
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="FontFamily" Value="Segoe UI" />
-            <Setter Property="FontWeight" Value="SemiLight" />
             <Setter Property="FontSize" Value="15" />
             <Setter Property="Background" Value="LightPink" />
             <Setter Property="Template">
@@ -110,7 +109,7 @@
 
             <TextBlock x:Name="TitleBlock" Typography.Capitals="SmallCaps" FontSize="24" Text="InputBox Title"/>
             <TextBlock x:Name="MessageBlock" Grid.Row="1" FontSize="15" Text="InputBox message here."/>
-            <TextBox x:Name="InputTypeBox" Foreground="White" Grid.Row="2" Margin="18, 8, 18, 0"/>
+            <TextBox x:Name="InputTextBox" Foreground="White" Grid.Row="2" Margin="18, 8, 18, 0"/>
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
