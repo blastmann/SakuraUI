@@ -81,6 +81,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <ProjectReference Include="..\..\SakuraUI.WindowsPhone\SakuraUI.WindowsPhone.csproj">
+      <Project>{fd239c61-ed64-4c14-9bf9-7f50e5e12fda}</Project>
+      <Name>SakuraUI.WindowsPhone</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\SakuraUI\SakuraUI.csproj">
       <Project>{1ae14f99-7c3d-4b26-bf86-304b33dd25ef}</Project>
       <Name>SakuraUI</Name>

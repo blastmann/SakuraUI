@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+using SakuraUI.WindowsPhone.Controls;
 
 namespace SakuraUI.Sample
 {
@@ -43,6 +44,12 @@ namespace SakuraUI.Sample
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
+        }
+
+        private void ShowInputBoxOnClick(object sender, RoutedEventArgs e)
+        {
+            var inputBox = new InputBox();
+            inputBox.Show();
         }
     }
 }
