@@ -91,6 +91,9 @@
     <Compile Include="Controls\PhoneMemory.xaml.cs">
       <DependentUpon>PhoneMemory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Toast.xaml.cs">
+      <DependentUpon>Toast.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\DialogService.cs" />
     <Compile Include="Utilities\TemplatedVisualTreeExtensions.cs" />
@@ -111,6 +114,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\PhoneMemory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Toast.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
