@@ -93,7 +93,11 @@
 
     </UserControl.Resources>
 
-    <Grid >
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="Black" Opacity=".5" />
+        </Grid.Background>
+        
         <Grid x:Name="ContentGrid" Background="{StaticResource PhoneAccentBrush}" VerticalAlignment="Center">
             <Grid.Projection>
                 <PlaneProjection />

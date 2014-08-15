@@ -9,6 +9,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button Click="ShowInputBoxOnClick">Show InputBox</Button>
+        <StackPanel VerticalAlignment="Bottom">
+            <Button Click="ShowInputBoxOnClick">Show InputBox</Button>
+            <Button Background="DeepSkyBlue" Click="ShowMessageBoxOnClick">Show MessageBox</Button>
+        </StackPanel>
     </Grid>
 </Page>

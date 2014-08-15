@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,6 +28,7 @@ namespace SakuraUI.Sample
         {
             this.InitializeComponent();
 
+            StatusBar.GetForCurrentView().HideAsync();
             this.NavigationCacheMode = NavigationCacheMode.Required;
         }
 
@@ -50,6 +52,12 @@ namespace SakuraUI.Sample
         {
             var inputBox = new InputBox();
             inputBox.Show();
+        }
+
+        private void ShowMessageBoxOnClick(object sender, RoutedEventArgs e)
+        {
+            var msgBox = new MessageBox { Title = "Hello world", Message = "Hi, I'm messagebox" };
+            msgBox.Show();
         }
     }
 }
